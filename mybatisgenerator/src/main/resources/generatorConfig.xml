@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 
 <generatorConfiguration>
-<!--    <properties url="C:\dev\worspace\maven\mybatisgenerator\src\main\resources\jdbc.properties"/>-->
+    <properties url="genejdbc.properties"/>
     <classPathEntry location="C:\dev\enviroment\Repository\com\mysql\mysql-connector-j\8.0.32\mysql-connector-j-8.0.32.jar"/>
 
     <context id="db" targetRuntime="MyBatis3">
@@ -21,7 +21,7 @@
         </commentGenerator>
 
             <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
-                                connectionURL="jdbc:mysql://localhost:3306/test?serverTimezone=UTC"
+                                connectionURL="#{connectionURL}"
                                 userId="root"
                                 password="root">
             </jdbcConnection>
@@ -35,11 +35,11 @@
             <property name="trimStrings" value="true" />
         </javaModelGenerator>
 
-        <sqlMapGenerator targetPackage="test.xml"  targetProject="src/main/java">
+        <sqlMapGenerator targetPackage="test.xml"  targetProject="#{targetProject}">
             <property name="enableSubPackages" value="true" />
         </sqlMapGenerator>
 
-        <javaClientGenerator type="XMLMAPPER" targetPackage="test.dao"  targetProject="src/main/java">
+        <javaClientGenerator type="XMLMAPPER" targetPackage="test.dao"  targetProject="#{targetProject}">
             <property name="enableSubPackages" value="true" />
         </javaClientGenerator>
 
